@@ -1,0 +1,19 @@
+<% provide(:title, "Sign in") %>
+
+<div class="row">
+  <div class="span6 offset3">
+    <h1>ZUEPIDON</h1>
+    <h2>Web Login</h2>
+    <%= form_for(:session, url: sessions_path, html: {id: 'signin_form'}) do |f| %>
+
+      <%= f.text_field :email, placeholder: 'Email', autofocus: true %>
+
+      <%= f.password_field :password, placeholder: 'Password' %>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <p><%= link_to 'Help', '' %></p>
+    <p>New user? <%= link_to "Create account", signup_path %></p>
+  </div>
+</div>

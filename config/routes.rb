@@ -1,6 +1,20 @@
 Zp::Application.routes.draw do
-  get "dashboard/home"
-  get "dashboard/about"
+  root  'dashboard#home'
+  match '/about',   to: 'dashboard#about',  via: 'get'
+  match '/signup',  to: 'users#new',        via: 'get'
+  match '/signin',  to: 'sessions#new',     via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+
+  resources :users do
+    collection do
+      post :check_signup_username
+      post :check_signup_email
+      post :check_signup_pw
+      post :check_signup_pw_confirmation
+    end
+  end
+  resources :sessions, only: [:new, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

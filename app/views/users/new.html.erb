@@ -1,0 +1,36 @@
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+      <div id="prompt_name">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
+        <div id="name_validation_msg"></div>
+      </div>
+
+      <div id="prompt_email">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <div id="email_validation_msg"></div>
+      </div>
+
+      <div id="prompt_pw">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <div id="pw_validation_msg"></div>
+      </div>
+
+      <div id="prompt pw_confirm">
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+        <div id="pw_confirm_validation_msg"></div>
+      </div>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
